@@ -18,6 +18,10 @@ data$ESTABLECIMIENTO <- gsub("[[:punct:]]", "", data$ESTABLECIMIENTO)
 # order
 data <- data[order(data$ESTABLECIMIENTO)]
 
+# detonate the dashes
+
+data$DIRECTOR <- gsub("-", "", data$DIRECTOR)
+
 filter(data$ESTABLECIMIENTO == "COLEGIOELEMILIO")
 
 data$ESTABLECIMIENTO
