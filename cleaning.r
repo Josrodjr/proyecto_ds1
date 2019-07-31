@@ -1,6 +1,4 @@
-<<<<<<< HEAD
 install.packages('stringr')
-install.packages('dplyr')
 
 
 data <- df.otrodf
@@ -75,8 +73,7 @@ data$DEPARTAMENTO <- gsub('\\s+', '_', data$DEPARTAMENTO)
 # STATUS, PLAN, MODALIDAD, JORNADA, ESTABLECIMIENTO, DEPARTAMENTO
 # new column
 data$IDENTIFIER <- paste(data$ESTABLECIMIENTO, '|', data$STATUS, '|', data$PLAN, 
-                         data$MODALIDAD, '|', data$JORNADA, '|', data$ESTABLECIMIENTO,
-                         '|', data$DEPARTAMENTO)
+                         '|', data$MODALIDAD, '|', data$JORNADA, '|', data$DEPARTAMENTO)
 
 # order
 data <- data[order(data$IDENTIFIER)]
@@ -85,35 +82,3 @@ data <- data[order(data$IDENTIFIER)]
 data$ESTABLECIMIENTO
 
 write.csv(data, file = "establecimiento.csv")
-
-=======
-install.packages('stringr')
-install.packages('dplyr')
-
-
-data <- df.otrodf
-colnames(data)
-
-# Caps
-data$ESTABLECIMIENTO <- apply(data$ESTABLECIMIENTO,2,toupper)
-# Spaces
-data$ESTABLECIMIENTO <- gsub('\\s+', '', data$ESTABLECIMIENTO)
-# ascii
-data$ESTABLECIMIENTO <- iconv(data$ESTABLECIMIENTO, from='UTF-8', to="ASCII//TRANSLIT")
-str_rep
-# special characters
-data$ESTABLECIMIENTO <- gsub("[[:punct:]]", "", data$ESTABLECIMIENTO)
-
-# order
-data <- data[order(data$ESTABLECIMIENTO)]
-
-# detonate the dashes
-
-data$DIRECTOR <- gsub("-", "", data$DIRECTOR)
-
-filter(data$ESTABLECIMIENTO == "COLEGIOELEMILIO")
-
-data$ESTABLECIMIENTO
-
-write.csv(data, file = "establecimiento.csv")
->>>>>>> fa5e92d9c72159a881e0f537b4b680dacea61592
