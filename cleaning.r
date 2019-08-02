@@ -1,8 +1,14 @@
 install.packages('stringr')
-
+install.packages("naniar")
+library(dplyr)
+library(naniar)
 
 data <- df.otrodf
 colnames(data)
+
+#Eliminate dashes and irregularities in DIRECTOR
+data$DIRECTOR <- gsub("-", "", data$DIRECTOR)
+data <- mutate_all(data, funs(replace(., .=='', NA)))
 
 # Caps
 data$ESTABLECIMIENTO <- apply(data$ESTABLECIMIENTO,2,toupper)
